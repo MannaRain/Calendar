@@ -17,12 +17,17 @@ public class MonthLengthPromptLoop {
 		Scanner input = new Scanner(System.in);
 //		int repeat = input.nextInt();
 
-		System.out.print("날 수를 알고 싶은 달은?\n> ");
-		int month = input.nextInt();
-		while (month != -1) {
-			System.out.printf("%d월은 %d일가지 있습니다.\n", month, MonthLengthPromptLoop.getMaxDate(month));
+		int month = 1;
+		while (true) {
 			System.out.print("날 수를 알고 싶은 달은?\n> ");
 			month = input.nextInt();
+			if (month == -1) {
+				break;
+			}
+			if (month > 12 | month < 1) {
+				continue;
+			}
+			System.out.printf("%d월은 %d일가지 있습니다.\n", month, MonthLengthPromptLoop.getMaxDate(month));
 		}
 		System.out.println("반복이 끝났습니다.");
 		input.close();
